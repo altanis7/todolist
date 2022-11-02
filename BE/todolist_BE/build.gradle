@@ -1,32 +1,44 @@
-plugins {
+plugins {		// 플로그인을 사용하려면 버전을 명시해줘야 함.
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
 }
 
-group = 'com.minlab'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+//프로젝트의 메타데이터
+group = 'com.minlab'			// artifact(애플리케이션) 를 배포하는 데 사용
+version = '0.0.1-SNAPSHOT'		// 이 프로젝트의 버전
+sourceCompatibility = '1.8'		// Compatibility에 명시된 자바 버전
 
 configurations {
 	compileOnly {
-		extendsFrom annotationProcessor
+		extendsFrom annotationProcessor		// lombok 이 코드를 작성하려면 어노테이션 프로세서라는 것이 필요.
 	}
 }
 
+//라이브러리르르 다운하는 곳을 '리포지터리'라 부른다.
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }	// 11.02 add
+	maven { url 'https://repo.spring.io/snapshot' }		// 11.02 add
 }
 
+//dependency 섹션에서 프로젝트에서 사용할 라이브러리를 명시하면 그래들이 리포지터리에서 라이브러리를 다운 및 설치한다.
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
-	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'		// '어노테이션 프로세서'로 왼쪽과 같이 사용하도록 디펜던시에 명시
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// <https://mvnrepository.com/artifact/com.google.guava/guava>
+	implementation group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
+
+
 }
 
+//그래들을 사용하면 빌드 뿐만 아니라 유닛 테스트도 실행시킬 수 있음.
 tasks.named('test') {
 	useJUnitPlatform()
 }
