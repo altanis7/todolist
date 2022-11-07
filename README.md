@@ -62,10 +62,10 @@ pw :
 #### [🎨 Figma] (https://www.figma.com/file/ItfnbHKmLGDy28Nz0onNyo/S.P-hmb-team-library?node-id=0%3A1)
 
 ## 프로젝트 기여자
-|Frontend💻|Backend👨‍💻|DevOps🚊|
-|:---|:---|:---|
-|[홍윤기](https://github.com/altanis7)|[조민](https://github.com/Minnaldo)|[조민](https://github.com/Minnaldo)|
-|[윤주봉](https://github.com/dbswnqhd12)| | |
+|Design🎨|Frontend💻|Backend👨‍💻|DevOps🚊|
+| |:---|:---|:---|
+|[윤주봉](https://github.com/dbswnqhd12)|[홍윤기](https://github.com/altanis7)|[조민](https://github.com/Minnaldo)|[조민](https://github.com/Minnaldo)|
+| |[윤주봉](https://github.com/dbswnqhd12)| | |
 
 ## 사용 기술
 |Design🎨|Frontend💻|Backend👨‍💻|DevOps🚊|
