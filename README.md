@@ -63,7 +63,7 @@ pw :
 
 ## 프로젝트 기여자
 |Design🎨|Frontend💻|Backend👨‍💻|DevOps🚊|
-| |:---|:---|:---|
+|:---|:---|:---|:---|
 |[윤주봉](https://github.com/dbswnqhd12)|[홍윤기](https://github.com/altanis7)|[조민](https://github.com/Minnaldo)|[조민](https://github.com/Minnaldo)|
 | |[윤주봉](https://github.com/dbswnqhd12)| | |
 
