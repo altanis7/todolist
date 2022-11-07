@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# 📝할 일 목록(todolist)📝
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## todolist 프로젝트
+### 주요 기능
+|할 일 생성|할 일 수정|할 일 조회|할 일 삭제| 
+|---|---|---|---|
 
-## Available Scripts
+### 게스트 로그인🔑
+```
+id : 
+pw :
+```
 
-In the project directory, you can run:
+## 프로젝트 폴더 구조
 
-### `npm start`
+### frontend💻
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### backend👨‍💻
+```
+├─build (프로젝트 빌드 결과)
+├─src (소스코드)
+│   ├─main
+│   │   ├─java
+│   │   │   └─com
+│   │   │       └─minlab
+│   │   │           └─todolist
+│   │   │               ├─config (설정 패키지)
+│   │   │               ├─controller (컨트롤러 패키지)
+│   │   │               ├─dto (dto 패키지)
+│   │   │               ├─model (entity 패키지)
+│   │   │               └─repository (repository 패키지)
+│   │   │               └─service (service 패키지)
+│   │   └─resources
+│   │       └─application.properties (스프링 프로파일)
+│   └─test (테스트 소스코드)
+├─gradlew (gradlew 실행파일)
+├─gradlew.bat (gradlew 실행파일)
+├─settings.gradle (gradlew 설정파일)
+└─build.gradle (gradlew 설정파일)
+```
 
-### `npm test`
+### Database ERD
+```
+...
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 실행 방법
 
-### `npm run build`
+### 클라이언트 실행
+```js
+...
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 서버 실행
+```
+...
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 프로젝트 산출물
+#### [🎨 Figma] (https://www.figma.com/file/ItfnbHKmLGDy28Nz0onNyo/S.P-hmb-team-library?node-id=0%3A1)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 프로젝트 기여자
+|Design🎨|Frontend💻|Backend👨‍💻|DevOps🚊|
+|:---|:---|:---|:---|
+|[윤주봉](https://github.com/dbswnqhd12)|[홍윤기](https://github.com/altanis7)|[조민](https://github.com/Minnaldo)|[조민](https://github.com/Minnaldo)|
+| |[윤주봉](https://github.com/dbswnqhd12)| | |
 
-### `npm run eject`
+## 사용 기술
+|Design🎨|Frontend💻|Backend👨‍💻|DevOps🚊|
+|:---|:---|:---|:---|
+|![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white)|![Javascript](https://img.shields.io/badge/Javascript-ffb13b?style=for-the-badge&logo=javascript&logoColor=white)|![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white)|![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)|
+| |![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)|![SpringBoot](https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=Spring&logoColor=white)| |
+| |![MySQL](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)|![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)|
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## LICENSE
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT License]() Created by HongMinBong ©2022
+<!-- ![License](https://img.shields.io/github/license/INFP-Study/CIAT) -->
