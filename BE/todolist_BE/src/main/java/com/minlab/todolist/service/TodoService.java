@@ -1,11 +1,13 @@
 package com.minlab.todolist.service;
 
+import com.minlab.todolist.dto.TodoDTO;
 import com.minlab.todolist.model.TodoEntity;
 import com.minlab.todolist.repository.TodoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,82 +18,165 @@ public class TodoService {
     @Autowired
     private TodoRepository repository;
 
-    public List<TodoEntity> create(final TodoEntity entity)
+    public boolean create(final TodoDTO dto)
     {
-        // Validations
-        validate(entity);
+        try {
+            TodoEntity entity = new TodoEntity();
 
-        repository.save(entity);
+            entity.setId(dto.getId());
+            entity.setTitle(dto.getTitle());
+            entity.setDone(dto.getDone());
 
-        log.info("Entity ID : {} is saved.", entity.getId());
+            repository.save(entity);
 
-        return repository.findByUserId(entity.getUserId());
-    }
+            log.info("Entity ID : {} is saved.", entity.getId());
 
-    public List<TodoEntity> update(final TodoEntity entity)
-    {
-        // (1) 저장할 엔티티가 유효한지 확인한다.
-        validate(entity);
-
-        // (2) 넘겨받은 엔티티 id를 이용해 TodoEntity를 가져온다. 존재하지 않는 엔티티는 업데이트할 수 없기 때문이다.
-        final Optional<TodoEntity> original = repository.findById(entity.getId());
-
-        if(original.isPresent())
+            return true;
+        } catch (Exception e)
         {
-            // (3) 반환된 TodoEntity가 존재하면 값을 새 entity 값으로 덮어 씌운다.
-            final TodoEntity todo = original.get();
-            todo.setTitle(entity.getTitle());
-            todo.setDone(entity.isDone());
-            
-            // (4) 데이터베이스에 새 값을 저장한다.
-            repository.save(todo);
+            log.info("Create Error : {} ", e);
+            return false;
         }
+    }
 
-        // Retrieve Todoo 에서 만든 메서드를 이용해 사용자의 모든 Todoo 리스트를 리턴한다.
-        return retrieve(entity.getUserId());
+    public boolean update(final TodoDTO dto)
+    {
+        try {
+            // (2) 넘겨받은 엔티티 id를 이용해 TodoEntity를 가져온다. 존재하지 않는 엔티티는 업데이트할 수 없기 때문이다.
+            Optional<TodoEntity> original = repository.findById(dto.getId());
+
+            if (original.isPresent()) {
+                final TodoEntity newtodo = original.get();
+                newtodo.setTitle(dto.getTitle());
+                newtodo.setDone(dto.getDone());
+
+                // (4) 데이터베이스에 새 값을 저장한다.
+                repository.save(newtodo);
+            }
+
+            // Retrieve Todoo 에서 만든 메서드를 이용해 사용자의 모든 Todoo 리스트를 리턴한다.
+            return true;
+        } catch (Exception e)
+        {
+            log.info("Update Error {}", e);
+            return false;
+        }
+    }
+
+    public boolean titleUpdate(final TodoDTO dto)
+    {
+        try {
+            // (2) 넘겨받은 엔티티 id를 이용해 TodoEntity를 가져온다. 존재하지 않는 엔티티는 업데이트할 수 없기 때문이다.
+            Optional<TodoEntity> original = repository.findById(dto.getId());
+
+            if (original.isPresent()) {
+                final TodoEntity newtodo = original.get();
+                newtodo.setTitle(dto.getTitle());
+
+                // (4) 데이터베이스에 새 값을 저장한다.
+                repository.save(newtodo);
+            }
+
+            // Retrieve Todoo 에서 만든 메서드를 이용해 사용자의 모든 Todoo 리스트를 리턴한다.
+            return true;
+        } catch (Exception e)
+        {
+            log.info("title_Update Error {}", e);
+            return false;
+        }
+    }
+
+    public boolean statusUpdate(final TodoDTO dto)
+    {
+        try {
+            // (2) 넘겨받은 엔티티 id를 이용해 TodoEntity를 가져온다. 존재하지 않는 엔티티는 업데이트할 수 없기 때문이다.
+            Optional<TodoEntity> original = repository.findById(dto.getId());
+
+            if (original.isPresent()) {
+                final TodoEntity newtodo = original.get();
+                newtodo.setDone(dto.getDone());
+
+                // (4) 데이터베이스에 새 값을 저장한다.
+                repository.save(newtodo);
+            }
+
+            // Retrieve Todoo 에서 만든 메서드를 이용해 사용자의 모든 Todoo 리스트를 리턴한다.
+            return true;
+        } catch (Exception e)
+        {
+            log.info("done_Update Error {}", e);
+            return false;
+        }
     }
 
 
-    public List<TodoEntity> delete(final TodoEntity entity)
+    public boolean deleteById(final Integer id)
     {
-        // (1) 저장할 엔티티가 유효한지 확인한다. 
-        validate(entity);
-
         try
         {
-            // (2) 엔티티를 삭제한다.
-            repository.delete(entity);
+            Optional<TodoEntity> original = repository.findById(id);
+
+            if (original.isPresent()) {
+                final TodoEntity newtodo = original.get();
+
+                repository.delete(newtodo);
+            }
+
+            return true;
         }
         catch(Exception e)
         {
-            // (3) exception 발생 시 id와 exception 을 로깅한다.
-            log.error("error deleting entity ", entity.getId(), e);
+            // (3) exception 발생 시 exception 을 로깅한다.
+            log.error("error deleting entity ", e);
 
-            // (4) 컨트롤러로 exception을 보낸다. 데이터베이스 내부 로직을 캡슐화하려면 e를 리턴하지 않고 새 exception 오브젝트를 리턴한다.
-            throw new RuntimeException("error deleting entity " + entity.getId());
+            return false;
         }
-
-        // (5) 새 Todoo 리스트를 가져와 리턴한다.
-        return retrieve(entity.getUserId());
     }
 
-    public List<TodoEntity> retrieve(final String userId)
+    public boolean deleteAll()
     {
-        return repository.findByUserId(userId);
+        try {
+            repository.deleteAll();
+            return true;
+        } catch (Exception e)
+        {
+            log.info("deleteall error {}", e);
+            return false;
+        }
     }
 
-    private void validate(final TodoEntity entity)
+    public List<TodoDTO> searchAll()
     {
-        if(entity == null)
-        {
-            log.warn("Entity cannot be null.");
-            throw new RuntimeException("Entity cannot be null.");
+        List<TodoEntity> entities = repository.findAll();
+
+        List<TodoDTO> dtosFor = new ArrayList<>();
+        for(TodoEntity te : entities){
+            TodoDTO dto = new TodoDTO(te);
+            dtosFor.add(dto);
         }
 
-        if(entity.getUserId() == null)
-        {
-            log.warn("Unknown user.");
-            throw new RuntimeException("Unknown user.");
-        }
+        return dtosFor;
     }
+
+    public TodoDTO searchByID(final Integer id)
+    {
+        Optional<TodoEntity> entity = repository.findById(id);
+
+        TodoDTO dto = new TodoDTO();
+        if(entity.isPresent() ) {
+
+            dto.setId(entity.get().getId());
+            dto.setTitle(entity.get().getTitle());
+            dto.setDone(entity.get().getDone());
+        }
+
+        TodoDTO.builder()
+                .id(entity.get().getId())
+                .title(entity.get().getTitle())
+                .done(entity.get().getDone())
+                .build();
+
+        return dto;
+    }
+
 }

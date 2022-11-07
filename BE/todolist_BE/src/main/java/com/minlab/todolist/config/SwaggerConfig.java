@@ -18,8 +18,8 @@ import java.util.Set;
 public class SwaggerConfig {
 
     private ApiInfo swaggerInfo() {
-        return new ApiInfoBuilder().title("IoT API")
-                .description("IoT API Docs").build();
+        return new ApiInfoBuilder().title("Todolist API - 홍민봉")
+                .description("Todolist API Docs").build();
     }
 
     @Bean
