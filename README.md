@@ -34,7 +34,7 @@ pw :
 │   │   │               └─repository (repository 패키지)
 │   │   │               └─service (service 패키지)
 │   │   └─resources
-│   │       └─application.properties (스프링 프로파일)
+│   │       └─application.yml (스프링 프로파일)
 │   └─test (테스트 소스코드)
 ├─gradlew (gradlew 실행파일)
 ├─gradlew.bat (gradlew 실행파일)
