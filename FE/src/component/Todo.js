@@ -78,7 +78,7 @@ const Todo = () => {
             <div className="checkBox">
               <img src="check.png"></img>
             </div>
-            <span>밥 먹기</span>
+            <span>밥 먹기!</span>
           </div>
           <div className="todo">
             <div className="checkBox"></div>

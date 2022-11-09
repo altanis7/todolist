@@ -1,11 +1,27 @@
-import "./App.css";
-import Todo from "./component/Todo";
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import Template from './component/Template';
+import TodoTitle from './component/TodoTitle';
+import Todolist from './component/Todolist';
+import PlusTodo from './component/PlusTodo';
+import { TodoProvider } from './TodoContext';
 
+//sdf
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: beige;
+  }
+`;
 function App() {
   return (
-    <div className="App">
-      <Todo></Todo>
-    </div>
+    <TodoProvider>
+      <GlobalStyle />
+        <Template>
+          <TodoTitle />
+          <Todolist />
+          <PlusTodo></PlusTodo>
+        </Template>
+    </TodoProvider>
   );
 }
 
