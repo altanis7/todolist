@@ -25,7 +25,7 @@ public class TodoService {
 
             entity.setId(dto.getId());
             entity.setTitle(dto.getTitle());
-            entity.setDone(dto.getDone());
+            entity.setIsdone(dto.getDone());
 
             repository.save(entity);
 
@@ -48,7 +48,7 @@ public class TodoService {
             if (original.isPresent()) {
                 final TodoEntity newtodo = original.get();
                 newtodo.setTitle(dto.getTitle());
-                newtodo.setDone(dto.getDone());
+                newtodo.setIsdone(dto.getDone());
 
                 // (4) 데이터베이스에 새 값을 저장한다.
                 repository.save(newtodo);
@@ -94,7 +94,7 @@ public class TodoService {
 
             if (original.isPresent()) {
                 final TodoEntity newtodo = original.get();
-                newtodo.setDone(dto.getDone());
+                newtodo.setIsdone(dto.getDone());
 
                 // (4) 데이터베이스에 새 값을 저장한다.
                 repository.save(newtodo);
@@ -167,13 +167,13 @@ public class TodoService {
 
             dto.setId(entity.get().getId());
             dto.setTitle(entity.get().getTitle());
-            dto.setDone(entity.get().getDone());
+            dto.setDone(entity.get().getIsdone());
         }
 
         TodoDTO.builder()
                 .id(entity.get().getId())
                 .title(entity.get().getTitle())
-                .done(entity.get().getDone())
+                .done(entity.get().getIsdone())
                 .build();
 
         return dto;
