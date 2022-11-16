@@ -12,11 +12,11 @@ import javax.persistence.*;
 @AllArgsConstructor     //클래스의 모든 멤버 변수를 매개변수로 받는 생성자를 구현해준다.
 @Data                   //클래스 멤버 변수의 Getter/Setter 메서드를 구현해 준다.
 @Entity                 //이름을 부여하고 싶다면 @Entity("TodoEntity") 같이 사용하면 된다.
-@Table(name = "Todo")   //데이터베이스의 Todoo 테이블에 매핑된다는 뜻.
+@Table(name = "todo")   //데이터베이스의 Todoo 테이블에 매핑된다는 뜻.
 public class TodoEntity {
     @Id                                                             // 기본 키가 될 필드를 지정.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                              // 이 오브젝트의 아이디
     private String title;                                           // Todo 타이틀(예 : 운동하기)
-    private Boolean done;                                           // true - todo 를 완료한 경우(checked)
+    private Boolean isdone;                                           // true - todo 를 완료한 경우(checked)
 }

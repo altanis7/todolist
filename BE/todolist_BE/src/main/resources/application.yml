@@ -1,0 +1,48 @@
+## MySQL ??
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+## db source url
+#    url: jdbc:mysql://localhost:3306/todolist?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+## db user name
+## db response password
+#    hikari:
+#      username: root
+#      password: 1234
+#  # true ??? JPA ??? ?? ??
+#  jpa:
+#    show-sql: true
+## DDL(create, alter, drop) ??? DB? ?? ??? ??? ? ??.
+#    hibernate:
+#      ddl-auto: update
+## JPA? ???? Hibernater? ????? ??? SQL? ???? ????.
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+server:
+  port : 5000
+spring:
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+#    datasource:
+#      url: jdbc:mysql://awseb-e-2cbiagfm82-stack-awsebrdsdatabase-egdoaolppnw8.c1phz5ed9tcw.ap-northeast-2.rds.amazonaws.com:3306/ebdb
+#      username: ebroot
+#      password: todolist
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+        format_sql: true
+
+  datasource:
+    url: jdbc:mysql://awseb-e-2cbiagfm82-stack-awsebrdsdatabase-egdoaolppnw8.c1phz5ed9tcw.ap-northeast-2.rds.amazonaws.com:3306/ebdb
+    username: ebroot
+    password: todolist
+#  datasource:
+#      url: jdbc:mysql://${RDS_HOSTNAME}:${RDS_PORT}/${RDS_DB_NAME}
+#      username: ${RDS_USERNAME}
+#      password: ${RDS_PASSWORD}
