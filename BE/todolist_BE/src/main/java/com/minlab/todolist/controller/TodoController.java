@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("todo")
@@ -16,6 +18,11 @@ public class TodoController {
 
     @Autowired
     private TodoService service;
+
+    @GetMapping("hello")
+    public List<String> Hello() {
+        return Arrays.asList("스프링 리액트 ", "연결 성공");
+    }
 
     @PostMapping("create")
     @ApiOperation(value = "TodoList 생성", notes = "title(내용)과 done(완료상태) 값을 받아 todolist를 생성한다.")
