@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
+@CrossOrigin(origins = "http://todo.ap-northeast-2.elasticbeanstalk.com/")
 @RestController
 @RequestMapping("todo")
 public class TodoController {
